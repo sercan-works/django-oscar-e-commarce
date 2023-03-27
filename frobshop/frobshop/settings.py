@@ -194,12 +194,17 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
-OSCAR_INITIAL_ORDER_STATUS = 'Pending'
-OSCAR_INITIAL_LINE_STATUS = 'Pending'
+OSCAR_INITIAL_ORDER_STATUS = 'Beklemede'
+OSCAR_INITIAL_LINE_STATUS = 'Beklemede'
 OSCAR_ORDER_STATUS_PIPELINE = {
-    'Pending': ('Being processed', 'Cancelled',),
-    'Being processed': ('Processed', 'Cancelled',),
-    'Cancelled': (),
+    'Gönderildi': ('İptal Edildi',),
+    'İşleniyor':('Gönderildi', 'Beklemede','İptal Edildi',),
+    'Beklemede': ('İşleniyor', 'İptal Edildi',),
+    'İptal Edildi': (),
+}
+
+OSCAR_ORDER_STATUS_CASCADE = {
+    'Being processed': 'In progress'
 }
 
 
@@ -221,5 +226,25 @@ OSCAR_ALLOW_ANON_REVIEWS = True
 
 OSCAR_ALLOW_ANON_RATINGS = True
 
-OSCAR_DASHBOARD_NAVIGATION.append({ 'label': 'Frobs', 'icon': 'icon-gift', 'children': [ ] })
+OSCAR_HIDDEN_FEATURES = ['']
+
+OSCAR_PRODUCTS_PER_PAGE = 12
+
+OSCAR_REVIEWS_PER_PAGE = 10
+
+OSCAR_ALLOW_ANON_REVIEWS = False
+
+OSCAR_MODERATE_REVIEWS = True
+
+OSCAR_SEND_REGISTRATION_EMAIL = True
+
+OSCAR_MISSING_IMAGE_URL = 'https://via.placeholder.com/300x300'
+
+OSCAR_GOOGLE_ANALYTICS_ID = 'UA-XXXXX-X' # Google Analytics ID
+
+OSCAR_CSV_INCLUDE_BOM = True
+
+# OSCAR_DASHBOARD_NAVIGATION.append({ 'label': 'Frobs', 
+#                                    'icon': 'icon-gift', 
+#                                    'children': [] })
 
