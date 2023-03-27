@@ -138,6 +138,7 @@ DATABASES = {
     }
 }
 
+
 COMPRESS_ENABLED = True
 
 # Password validation
