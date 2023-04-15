@@ -13,6 +13,7 @@ urlpatterns = [
     # Nonetheless, it's often useful for debugging.
 
     path('admin/', admin.site.urls),
-
+     path("__reload__/", include("django_browser_reload.urls")),
     path('', include(apps.get_app_config('oscar').urls[0])),
+    path("api/", include("oscarapi.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

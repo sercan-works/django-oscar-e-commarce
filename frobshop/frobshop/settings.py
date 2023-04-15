@@ -19,6 +19,9 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -69,8 +72,16 @@ INSTALLED_APPS = [
     'treebeard',
     'sorl.thumbnail',   # Default thumbnail backend, can be replaced
     'django_tables2',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+    
+    'rest_framework',
+    'oscarapi'
 
 ]
+
+TAILWIND_APP_NAME = 'theme'
 
 SITE_ID = 1
 
@@ -84,6 +95,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'oscar.apps.basket.middleware.BasketMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'frobshop.urls'
@@ -248,3 +260,4 @@ OSCAR_CSV_INCLUDE_BOM = True
 #                                    'icon': 'icon-gift', 
 #                                    'children': [] })
 
+# OSCARAPI_OVERRIDE_MODULES = ["frobshop.api_extensions"]
